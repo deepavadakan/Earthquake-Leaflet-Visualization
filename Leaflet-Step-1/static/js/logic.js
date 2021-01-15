@@ -21,6 +21,21 @@ var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.ge
   
 console.log(url);
 
+var colors = ['#FFEDA0', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#BD0026', '#800026']
+var limits = [-10, 0, 5, 10, 15, 20, 25, 30];
+
+function getColor(d) {
+  
+  for (var i = 0; i < limits.length; i++) {
+    if (d < limits[i]) {
+      // console.log(d);
+      // console.log(colors[i]);
+      return colors[i];
+    }
+    
+  }
+}
+
 // Grab the data with d3
 d3.json(url, function(earthquakeData) {
   console.log(earthquakeData);
@@ -39,15 +54,37 @@ d3.json(url, function(earthquakeData) {
         fillOpacity: 0.75,
         color: "white",
         weight: 0.5,
-        fillColor: location.coordinates[2],
+        fillColor: getColor(location.coordinates[2]),
         // Adjust radius
-        radius: response[i].properties.mag * 10000
-      }).bindPopup("<h2 text-anchor=middle>Magnitude: " + response[i].properties.mag 
-        + "</h2><hr><strong>Location: </strong>" + response[i].properties.place 
+        radius: response[i].properties.mag * 12000
+      }).bindPopup("<h3>Magnitude: " + response[i].properties.mag 
+        + "<br>Depth: " + location.coordinates[2] 
+        + " kms</h3><hr><strong>Location: </strong>" + response[i].properties.place 
         + "<br><strong>Date: </strong>" + new Date(response[i].properties.time)).addTo(myMap);
     }
   }
 
-  // Add our marker cluster layer to the map
-  //myMap.addTo(circles);
+  // Set up the legend
+  var legend = L.control({ position: 'bottomright' });
+
+  legend.onAdd = function (myMap) {
+    var div = L.DomUtil.create('div', 'info legend');
+    
+    div.innerHTML = '<h4>Earthquake<br>Depth (kms)</h4>';
+    
+    for (var i = 0; i < limits.length - 1; i++) {
+      
+      div.innerHTML +=
+        '<i style="background:' + getColor(limits[i] - 1) + '"></i> ' +
+        limits[i] + '&ndash;' + limits[i + 1] + '<br>';
+    }
+    
+    div.innerHTML +=
+        '<i style="background:' + getColor(limits[limits.length - 1] - 1) + '"></i> ' +
+        limits[i] + '+<br>';
+    return div;
+  }
+
+  // Adding legend to the map
+  legend.addTo(myMap)
 });
