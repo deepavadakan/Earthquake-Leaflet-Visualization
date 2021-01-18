@@ -95,9 +95,6 @@ d3.json(EarthquakeURL, function (response) {
 
     var earthquakeData = response.features;
 
-    // create group layer for circle
-    var circles = L.layerGroup();
-
     // Loop through data
     for (var i = 0; i < earthquakeData.length; i++) {
 
@@ -106,35 +103,23 @@ d3.json(EarthquakeURL, function (response) {
 
       if (location) {
 
-        var circle = L.circle([location.coordinates[1], location.coordinates[0]], {
+        L.circleMarker([location.coordinates[1], location.coordinates[0]], {
           fillOpacity: 0.75,
           color: "white",
           weight: 0.5,
           // get color of circle based on earthquake depth
           fillColor: getColor(location.coordinates[2]),
           // Adjust radius based on magnitude
-          radius: earthquakeData[i].properties.mag * 500000 * (1 / Math.pow(2, zoomlevel))
+          radius: earthquakeData[i].properties.mag * 5
         }).bindPopup("<h3>Magnitude: " + earthquakeData[i].properties.mag
           + "<br>Depth: " + location.coordinates[2]
           + " kms</h3><hr><strong>Location: </strong>" + earthquakeData[i].properties.place
-          + "<br><strong>Date: </strong>" + new Date(earthquakeData[i].properties.time));
-        circle._mag = earthquakeData[i].properties.mag;
-        // Add circle to circles group
-        circle.addTo(circles);
-
+          + "<br><strong>Date: </strong>" + new Date(earthquakeData[i].properties.time))
+          .addTo(myMap);
+        
       }
     }
-    // Add circles group to the Earthquake layer
-    circles.addTo(layers.Earthquakes);
-
-    // when zoom is changed, alter circle size
-    myMap.on('zoomend', function () {
-      zoomlevel = myMap.getZoom();
-      circles.eachLayer(function (marker) {
-        marker.setRadius(marker._mag * 500000 * (1 / Math.pow(2, zoomlevel)));
-      });
-    });
-
+    
     // Set up the legend
     var legend = L.control({ position: 'bottomright' });
 
