@@ -42,7 +42,7 @@
 
 8.  Added a legend that provides context for the map data.
 
-![Map 2](images/map.png)
+![Map 2](images/map2.png)
 
 
 ## Contact
