@@ -32,6 +32,9 @@ function getColor(d) {
     if (d < limits[i]) {
       return colors[i-1];
     }
+    else if (d > limits[limits.length - 1]) {
+      return colors[limits.length - 1];
+    }
   }
 }
 
