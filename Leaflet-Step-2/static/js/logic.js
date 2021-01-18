@@ -113,7 +113,7 @@ d3.json(EarthquakeURL, function (response) {
           // get color of circle based on earthquake depth
           fillColor: getColor(location.coordinates[2]),
           // Adjust radius based on magnitude
-          radius: earthquakeData[i].properties.mag * 100000 * (1 / zoomlevel)
+          radius: earthquakeData[i].properties.mag * 500000 * (1 / Math.pow(2,zoomlevel))
         }).bindPopup("<h3>Magnitude: " + earthquakeData[i].properties.mag
           + "<br>Depth: " + location.coordinates[2]
           + " kms</h3><hr><strong>Location: </strong>" + earthquakeData[i].properties.place
@@ -131,7 +131,7 @@ d3.json(EarthquakeURL, function (response) {
     myMap.on('zoomend', function () {
       zoomlevel = myMap.getZoom();
       circles.eachLayer(function (marker) {
-        marker.setRadius(marker._mag * 100000 * (1 / zoomlevel));
+        marker.setRadius(marker._mag * 500000 * (1 / Math.pow(2,zoomlevel)));
       });
     });
 
