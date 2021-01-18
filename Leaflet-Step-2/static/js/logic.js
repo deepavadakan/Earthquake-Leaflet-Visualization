@@ -41,10 +41,13 @@ var layers = {
   Earthquakes: new L.LayerGroup()
 };
 
+// Set initial zoom level
+var zoomlevel = 2;
+
 // Create the map with the layers
 var myMap = L.map("mapid", {
   center: [40.52, 25.34],
-  zoom: 2,
+  zoom: zoomlevel,
   layers: [
     satelliteMap,
     layers.Tectonic_Plates,
@@ -89,30 +92,44 @@ d3.json(EarthquakeURL, function (response) {
 
     var earthquakeData = response.features;
 
+    // create group layer for circle
+    var circles = L.layerGroup();
+
     // Loop through data
     for (var i = 0; i < earthquakeData.length; i++) {
 
       // Set the data location property to a variable
       var location = earthquakeData[i].geometry;
 
-      //console.log(earthquakeData[i]);
       if (location) {
-        L.circle([location.coordinates[1], location.coordinates[0]], {
+
+        var circle = L.circle([location.coordinates[1], location.coordinates[0]], {
           fillOpacity: 0.75,
           color: "white",
           weight: 0.5,
           // get color of circle based on earthquake depth
           fillColor: getColor(location.coordinates[2]),
           // Adjust radius based on magnitude
-          radius: earthquakeData[i].properties.mag * 12000
+          radius: earthquakeData[i].properties.mag * 100000
         }).bindPopup("<h3>Magnitude: " + earthquakeData[i].properties.mag
           + "<br>Depth: " + location.coordinates[2]
           + " kms</h3><hr><strong>Location: </strong>" + earthquakeData[i].properties.place
-          + "<br><strong>Date: </strong>" + new Date(earthquakeData[i].properties.time))
-          // Add Earthquake data to the Earthquake layer
-          .addTo(layers.Earthquakes);
+          + "<br><strong>Date: </strong>" + new Date(earthquakeData[i].properties.time));
+        circle._mag = earthquakeData[i].properties.mag;
+        // Add circle to circles group
+        circle.addTo(circles);
+
       }
     }
+    // Add circles group to the Earthquake layer
+    circles.addTo(layers.Earthquakes);
+
+    myMap.on('zoomend', function () {
+      zoomlevel = myMap.getZoom();
+      circles.eachLayer(function (marker) {
+        marker.setRadius(marker._mag * 100000 * (1 / zoomlevel));
+      });
+    });
 
     // Set up the legend
     var legend = L.control({ position: 'bottomright' });
