@@ -20,8 +20,6 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 // url with geojson data
 var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
-// console.log(url);
-
 // set the colors and limits for Earthquake depth 
 var colors = ['#4FB361', '#63ff00', '#d6ff00', '#ffc100', '#ff0000', '#800026']
 var limits = [-10, 10, 30, 50, 70, 90];
