@@ -30,7 +30,7 @@ var limits = [-10, 10, 30, 50, 70, 90];
 function getColor(d) {
   for (var i = 0; i < limits.length; i++) {
     if (d < limits[i]) {
-      return colors[i];
+      return colors[i-1];
     }
   }
 }
@@ -95,13 +95,13 @@ d3.json(url, function (response) {
 
       // get the color and and limits
       div.innerHTML +=
-        '<i style="background:' + getColor(limits[i] - 1) + '"></i> ' +
+        '<i style="background:' + colors[i] + '"></i> ' +
         limits[i] + '&ndash;' + limits[i + 1] + '<br>';
     }
 
     // set color for last limit
     div.innerHTML +=
-      '<i style="background:' + getColor(limits[limits.length - 1] - 1) + '"></i> ' +
+      '<i style="background:' + colors[limits.length - 1]  + '"></i> ' +
       limits[i] + '+<br>';
     return div;
   }
