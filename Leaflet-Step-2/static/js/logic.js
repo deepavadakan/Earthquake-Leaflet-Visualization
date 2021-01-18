@@ -46,7 +46,7 @@ var zoomlevel = 2;
 
 // Create the map with the layers
 var myMap = L.map("mapid", {
-  center: [40.52, 25.34],
+  center: [30.52, 5.34],
   zoom: zoomlevel,
   layers: [
     satelliteMap,
@@ -82,7 +82,7 @@ function getColor(d) {
 
 // url with geojson data
 var EarthquakeURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
-var tectonicURL = "static/data/PB2002_plates.json";
+var tectonicURL = "static/data/PB2002_boundaries.json";
 
 // Grab the data with d3
 d3.json(EarthquakeURL, function (response) {
