@@ -27,8 +27,6 @@ var outdoorsMap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{
   accessToken: API_KEY
 });
 
-// Create two separate layer groups: one for cities and one for states
-
 // Create a baseMaps object
 var baseMaps = {
   "Satellite": satelliteMap,
@@ -36,8 +34,31 @@ var baseMaps = {
   "Outdoors": outdoorsMap
 };
 
+// Initialize all of the LayerGroups we'll be using
+var layers = {
+  Tectonic_Plates: new L.LayerGroup(),
+  Earthquakes: new L.LayerGroup()
+};
 
+// Create the map with our layers
+var myMap = L.map("mapid", {
+  center: [40.52, 54.34],
+  zoom: 2,
+  layers: [
+    satelliteMap,
+    layers.Tectonic_Plates,
+    layers.Earthquakes
+  ]
+});
 
+// Create an overlays object to add to the layer control
+var overlays = {
+  "Tectonic Plates": layers.Tectonic_Plates,
+  "Earthquakes": layers.Earthquakes
+};
+
+// Create a control for our layers, add our overlay layers to it
+L.control.layers(baseMaps, overlays).addTo(myMap);
 
 // set the colors and limits for Earthquake depth 
 var colors = ['#4FB361', '#63ff00', '#d6ff00', '#ffc100', '#ff0000', '#800026']
@@ -88,18 +109,7 @@ d3.json(EarthquakeURL, function (response) {
           + "<br><strong>Date: </strong>" + new Date(earthquakeData[i].properties.time)).addTo(myMap);
       }
     }
-    // Create an overlay object
-    var overlayMaps = {
-      "State Population": states,
-      "City Population": cities
-    };
 
-    // Define a map object
-    var myMap = L.map("mapid", {
-      center: [40.52, 54.34],
-      zoom: 2,
-      layers: [streetmap, states, cities]
-    });
   
 
     // Set up the legend
