@@ -20,8 +20,8 @@ var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.ge
 // console.log(url);
 
 // set the colors and limits for Earthquake depth 
-var colors = ['#FFEDA0', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#BD0026', '#800026']
-var limits = [-10, 0, 5, 10, 15, 20, 25, 30];
+var colors = ['#4FB361', '#63ff00', '#d6ff00', '#ffc100', '#ff0000', '#800026']
+var limits = [-10, 10, 30, 50, 70, 90];
 
 // function to find the color given the Earthquake depth
 function getColor(d) {
@@ -65,17 +65,22 @@ d3.json(url, function(response) {
   var legend = L.control({ position: 'bottomright' });
 
   legend.onAdd = function (myMap) {
+    // create div for legend
     var div = L.DomUtil.create('div', 'info legend');
     
+    // add title for legend
     div.innerHTML = '<h4>Earthquake<br>Depth (kms)</h4>';
     
+    // for each limit except the last
     for (var i = 0; i < limits.length - 1; i++) {
       
+      // get the color and and limits
       div.innerHTML +=
         '<i style="background:' + getColor(limits[i] - 1) + '"></i> ' +
         limits[i] + '&ndash;' + limits[i + 1] + '<br>';
     }
     
+    // set color for last limit
     div.innerHTML +=
         '<i style="background:' + getColor(limits[limits.length - 1] - 1) + '"></i> ' +
         limits[i] + '+<br>';
