@@ -110,7 +110,7 @@ d3.json(EarthquakeURL, function (response) {
           // get color of circle based on earthquake depth
           fillColor: getColor(location.coordinates[2]),
           // Adjust radius based on magnitude
-          radius: earthquakeData[i].properties.mag * 5
+          radius: earthquakeData[i].properties.mag * 3
         }).bindPopup("<h3>Magnitude: " + earthquakeData[i].properties.mag
           + "<br>Depth: " + location.coordinates[2]
           + " kms</h3><hr><strong>Location: </strong>" + earthquakeData[i].properties.place
