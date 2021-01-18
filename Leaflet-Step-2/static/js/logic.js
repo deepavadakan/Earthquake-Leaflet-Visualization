@@ -72,7 +72,7 @@ var limits = [-10, 10, 30, 50, 70, 90];
 function getColor(d) {
   for (var i = 0; i < limits.length; i++) {
     if (d < limits[i]) {
-      return colors[i-1];
+      return colors[i - 1];
     }
     else if (d > limits[limits.length - 1]) {
       return colors[limits.length - 1];
@@ -113,7 +113,7 @@ d3.json(EarthquakeURL, function (response) {
           // get color of circle based on earthquake depth
           fillColor: getColor(location.coordinates[2]),
           // Adjust radius based on magnitude
-          radius: earthquakeData[i].properties.mag * 500000 * (1 / Math.pow(2,zoomlevel))
+          radius: earthquakeData[i].properties.mag * 500000 * (1 / Math.pow(2, zoomlevel))
         }).bindPopup("<h3>Magnitude: " + earthquakeData[i].properties.mag
           + "<br>Depth: " + location.coordinates[2]
           + " kms</h3><hr><strong>Location: </strong>" + earthquakeData[i].properties.place
@@ -131,7 +131,7 @@ d3.json(EarthquakeURL, function (response) {
     myMap.on('zoomend', function () {
       zoomlevel = myMap.getZoom();
       circles.eachLayer(function (marker) {
-        marker.setRadius(marker._mag * 500000 * (1 / Math.pow(2,zoomlevel)));
+        marker.setRadius(marker._mag * 500000 * (1 / Math.pow(2, zoomlevel)));
       });
     });
 
@@ -149,14 +149,16 @@ d3.json(EarthquakeURL, function (response) {
       for (var i = 0; i < limits.length - 1; i++) {
 
         // get the color and and limits
+        var lowerLimit = limits[i];
+        var upperLimit = limits[i + 1] - 1;
         div.innerHTML +=
-        '<i style="background:' + colors[i] + '"></i> ' +
-          limits[i] + '&ndash;' + limits[i + 1] + '<br>';
+          '<i style="background:' + colors[i] + '"></i> ' +
+          lowerLimit + '&ndash;' + upperLimit + '<br>';
       }
 
       // set color for last limit
       div.innerHTML +=
-      '<i style="background:' + colors[limits.length - 1]  + '"></i> ' +
+        '<i style="background:' + colors[limits.length - 1] + '"></i> ' +
         limits[i] + '+<br>';
       return div;
     }
