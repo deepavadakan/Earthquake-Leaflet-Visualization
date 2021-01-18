@@ -4,8 +4,8 @@
 
 
 ## Table of contents
-* [Level 1](#Level_1)
-* [Level 2](#Level_2)
+* [Level 1: Basic Visualization](#Level_1)
+* [Level 2: More Data](#Level_2)
 * [Contact](#Contact)
 
 
@@ -24,7 +24,7 @@
 ![Map 1](images/map1.png)
 
 
-## Level 1: More Visualization
+## Level 2: More Data
 
 1.  Data set 1: 'All Earthquakes from the Past 7 Days'
 
