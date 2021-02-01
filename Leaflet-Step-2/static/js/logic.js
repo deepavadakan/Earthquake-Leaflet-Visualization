@@ -115,7 +115,7 @@ d3.json(EarthquakeURL, function (response) {
           + "<br>Depth: " + location.coordinates[2]
           + " kms</h3><hr><strong>Location: </strong>" + earthquakeData[i].properties.place
           + "<br><strong>Date: </strong>" + new Date(earthquakeData[i].properties.time))
-          .addTo(myMap);
+          .addTo(layers.Earthquakes);
         
       }
     }
