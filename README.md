@@ -61,7 +61,6 @@ Add your mapbox API key to config.js within the static/js folder in both the Lea
 
 ## Libraries 
 **Libraries**
-* [JavaScript Libraries](https://medium.com/javascript-in-plain-english/best-javascript-data-visualization-libraries-for-2020-15291919a176)
 * [Leaflet](https://leafletjs.com/)
 
 **JavaScript Dependencies**
