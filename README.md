@@ -4,8 +4,12 @@
 
 
 ## Table of contents
-* [Level 1: Basic Visualization](#Level_1)
-* [Level 2: More Data](#Level_2)
+* [Level 1: Basic Visualization](#Level-1)
+* [Level 2: More Data](#Level-2)
+* [Setup Instructions](#setup)
+* [Data Sources](#data)
+* [Technologies](#technologies)
+* [Libraries](#libraries)
 * [Contact](#Contact)
 
 
@@ -44,6 +48,37 @@
 
 ![Map 2](images/map2.png)
 
+
+## Setup Instructions
+Add your mapbox API key to config.js within the static/js folder in both the Leaflet-Step-1 and Leaflet-Step-2 folders.
+
+
+## Data Sources
+- [Earthquake Data](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson)
+- [Tectonic Plates](https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json)
+
+## Technologies
+* Flask
+* Javascript
+* HTML/ CSS
+* D3
+* JSON
+* GEOJSON
+
+## Libraries 
+**Libraries**
+* [JavaScript Libraries](https://medium.com/javascript-in-plain-english/best-javascript-data-visualization-libraries-for-2020-15291919a176)
+* [Leaflet](https://leafletjs.com/)
+
+**JavaScript Dependencies**
+* [Leaflet JS](https://unpkg.com/leaflet@1.6.0/dist/leaflet.js)
+* [Marker Cluster JS](https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js)
+* [D3 Javascript](https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.min.js)
+* [Marker Cluster](https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js)
+
+**HTML CSS Dependencies**
+* [Leaflet Stylesheet](https://unpkg.com/leaflet@1.6.0/dist/leaflet.css)
+* [Marker Cluster Stylesheet](https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css)
 
 ## Contact
 Created by [@deepavadakan](https://github.com/)
