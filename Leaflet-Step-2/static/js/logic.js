@@ -91,7 +91,11 @@ d3.json(EarthquakeURL, function (response) {
     //console.log(tectonicData);
 
     // Add tectonic data to the Tectonic layer
-    L.geoJson(tectonicData).addTo(layers.Tectonic_Plates);
+    L.geoJson(tectonicData,{
+        style: function (feature) {
+          return {color: "green"};
+      }
+    }).addTo(layers.Tectonic_Plates);
 
     var earthquakeData = response.features;
 
