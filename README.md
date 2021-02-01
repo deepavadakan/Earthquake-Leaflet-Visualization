@@ -4,16 +4,16 @@
 
 
 ## Table of contents
-* [Level 1: Basic Visualization](#Level-1)
-* [Level 2: More Data](#Level-2)
+* [Level 1: Basic Visualization](#level-1)
+* [Level 2: More Data](#level-2)
 * [Setup Instructions](#setup)
-* [Data Sources](#data)
+* [Data Sources](#data-sources)
 * [Technologies](#technologies)
 * [Libraries](#libraries)
 * [Contact](#Contact)
 
 
-## Level 1: Basic Visualization
+## Level 1
 
 1.  Data set: 'All Earthquakes from the Past 7 Days'
 
@@ -28,7 +28,7 @@
 ![Map 1](images/map1.png)
 
 
-## Level 2: More Data
+## Level 2
 
 1.  Data set 1: 'All Earthquakes from the Past 7 Days'
 
@@ -49,7 +49,7 @@
 ![Map 2](images/map2.png)
 
 
-## Setup Instructions
+## Setup
 Add your mapbox API key to config.js within the static/js folder in both the Leaflet-Step-1 and Leaflet-Step-2 folders.
 
 
