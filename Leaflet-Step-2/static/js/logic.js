@@ -82,13 +82,13 @@ function getColor(d) {
 
 // url with geojson data
 var EarthquakeURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
-var tectonicURL = "static/data/PB2002_boundaries.json";
+var tectonicURL = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json";
 
 // Grab the data with d3
 d3.json(EarthquakeURL, function (response) {
   d3.json(tectonicURL, function (tectonicData) {
-    console.log(response);
-    console.log(tectonicData);
+    //console.log(response);
+    //console.log(tectonicData);
 
     // Add tectonic data to the Tectonic layer
     L.geoJson(tectonicData).addTo(layers.Tectonic_Plates);
