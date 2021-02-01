@@ -15,36 +15,30 @@
 
 ## Level 1
 
-1.  Data set: 'All Earthquakes from the Past 7 Days'
+1.  Create a map using Leaflet that plots all of the earthquakes from the data set based on their longitude and latitude.
 
-2.  Create a map using Leaflet that plots all of the earthquakes from the data set based on their longitude and latitude.
+2.  Data markers reflect the magnitude of the earthquake by their size and and depth of the earth quake by color. Earthquakes with higher magnitudes appear larger and earthquakes with greater depth appear darker in color.
 
-3.  Data markers reflect the magnitude of the earthquake by their size and and depth of the earth quake by color. Earthquakes with higher magnitudes appear larger and earthquakes with greater depth appear darker in color.
+3.  Added popups that provide additional information about the earthquake: Magnitude, Depth, Location and Date.
 
-4.  Added popups that provide additional information about the earthquake: Magnitude, Depth, Location and Date.
-
-5.  Added a legend that provides context for the map data.
+4.  Added a legend that provides context for the map data.
 
 ![Map 1](images/map1.png)
 
 
 ## Level 2
 
-1.  Data set 1: 'All Earthquakes from the Past 7 Days'
+1.  Create a map using Leaflet with 3 options: Satellite, Grayscale and Outdoors
 
-2.  Data Set 2: tectonic plates
+2.  Plot all of the earthquakes on the map from the data set based on their longitude and latitude.
 
-3.  Create a map using Leaflet with 3 options: Satellite, Grayscale and Outdoors
+3.  Plot a second data set on the map to illustrate the relationship between tectonic plates and seismic activity.
 
-4.  Plot all of the earthquakes on the map from the data set based on their longitude and latitude.
+4.  Data markers reflect the magnitude of the earthquake by their size and and depth of the earth quake by color. Earthquakes with higher magnitudes appear larger and earthquakes with greater depth appear darker in color.
 
-5.  Plot a second data set on the map to illustrate the relationship between tectonic plates and seismic activity.
+5.  Added popups that provide additional information about the earthquake: Magnitude, Depth, Location and Date.
 
-6.  Data markers reflect the magnitude of the earthquake by their size and and depth of the earth quake by color. Earthquakes with higher magnitudes appear larger and earthquakes with greater depth appear darker in color.
-
-7.  Added popups that provide additional information about the earthquake: Magnitude, Depth, Location and Date.
-
-8.  Added a legend that provides context for the map data.
+6.  Added a legend that provides context for the map data.
 
 ![Map 2](images/map2.png)
 
@@ -54,7 +48,7 @@ Add your mapbox API key to config.js within the static/js folder in both the Lea
 
 
 ## Data Sources
-- [Earthquake Data](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson)
+- [Earthquake Data: All Earthquakes from the Past 7 Days](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson)
 - [Tectonic Plates](https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json)
 
 ## Technologies
